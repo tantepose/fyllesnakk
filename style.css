@@ -1,0 +1,149 @@
+html
+{
+	cursor: url(cursor.png), auto;
+}
+
+body, a
+{
+	background-color: #404040;
+	color: white; 
+	font-family: 'Press Start 2P', cursive;
+	text-align: center;
+	margin: 0px;
+	width: 100%;
+	line-height: 110%;
+}
+
+button, input
+{
+	width: 50%;
+	border: 5px solid white;
+	background-color: orange;
+	padding: 10px;
+	color: white; 
+	font-family: 'Press Start 2P', cursive;
+	font-size: 30px;
+	margin: 10px;
+	cursor: url(cursor.png), auto;
+}
+
+.menu button
+{
+	width: 75%;
+	margin: 20px;
+	padding: 15px;
+}
+
+input
+{
+	background-color: #404040;
+	text-align: center;
+}
+
+.playArea, .menu
+{
+	padding: 5px;
+	margin: 5px;
+}
+
+.footer
+{
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+	background-color: #404040;
+}
+
+h1
+{
+	font-size: 22px;
+}
+
+h2
+{
+	font-size: 18px; 
+}
+
+h3
+{
+	font-size: 15px; 
+}
+
+h4
+{
+	font-size: 10px;
+	color: orange;
+}
+
+@media screen and (min-width: 750px) 
+{
+	.menu button, .playArea button, .playArea input
+	{
+		width: 50%;
+		padding: 20px;
+		margin: 20px;
+		font-size: 40px;
+		border: 10px solid white;
+	}
+	
+	body h3
+	{
+		line-height: 150%;
+	}
+
+	.playArea h2
+	{
+		padding: 20px;
+		margin: 20px;
+	}	
+
+	.menu, .playArea
+	{
+		padding: 15px;
+		margin: 15px; 
+	}
+
+	.header
+	{
+
+		padding-top:15px;
+		padding-bottom: 0px;
+	}	
+
+	.footer
+	{
+		border-top: 10px dotted orange;
+	}
+
+	button:hover
+	{
+		background-color: #ffc14d;
+	}
+
+	input:hover
+	{
+		background-color: dimgrey;
+	}
+
+	h1
+	{
+		font-size: 40px;
+	}
+
+	h2
+	{
+		font-size: 30px; 
+	}
+
+	h3
+	{
+		font-size: 20px; 
+	}
+
+	h4
+	{
+		font-size: 20px;
+		color: orange;
+	}
+}

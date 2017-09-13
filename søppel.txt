@@ -1,0 +1,41 @@
+//SØPPEL SØPPEL SØPPEL SØPPEL SØPPEL 
+
+		var pickQuest2 = function () 
+		{
+			//document.getElementById("debug").innerHTML = "currentQuests.length=" + currentQuests.length + " plukker quest: " + currentQuests;
+			
+			timer1++;
+			if (timer1<25)
+			{
+				randomNumber = Math.floor((Math.random() * currentQuests.length));
+				document.getElementById("quest-text").innerHTML = currentQuests[randomNumber];
+				setTimeout(pickQuest, timer1/0.2);
+			}
+			else
+			{
+				timer1 = 0;
+				$("#endButton").show();
+				//return; 
+			}
+		}
+		
+		var pickType = function ()
+		{		
+			$("#questType-text").show();
+			$("#startButton").hide();
+			
+			timer++;
+			if (timer<25)
+			{
+				randomNumber1 = Math.floor((Math.random() * questTypes.length));
+				document.getElementById("questType-text").innerHTML = questTypes[randomNumber1];
+				setTimeout(pickType, timer/0.2);
+			}
+			else
+			{
+				currentQuestType = randomNumber1;		
+				$("#questButton").show();
+				timer = 0; 
+				return;
+			}
+		}

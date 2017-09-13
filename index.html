@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+	<title>Fyllesnakk.no - drikkespill på mobil, PC, nettbrett</title>
+    <meta name="description" content="Fyllesnakk.no - drikkespillet for deler av familien."/>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="favicon.png"/>
+
+	<meta property="og:title" content="Fyllesnakk.no - drikkespill på mobil, PC, nettbrett" />
+    <meta property="og:url" content="http://www.fyllesnakk.no/" />
+    <meta property="og:type" content="game" />
+    <meta property="og:description" content="Over 200 oppgaver, spørsmål og dilemmaer - helt gratis." />
+    <meta property="og:image" content="http://www.fyllesnakk.no/facebook.jpg" />
+</head>
+
+<body>
+		<div class="header">
+			<h1>\\\\\\\\\\\\\\</h1>
+			<h1 id="title" onclick="easterEgg()">fyllesnakk.txt</h1>
+			<h1>\\\\\\\\\\\\\\</h1>
+		</div>
+
+		<div class ="menu">
+			<button id="startButton" onclick="mainMenuClicks(0)">start</button>
+			<button id="helpButton" onclick="mainMenuClicks(1)">hjelp</button>
+			<button id="aboutButton" onclick="mainMenuClicks(2)">om</button>
+			<h3 id="menuText">&nbsp;</h3>
+			<button id="backButton" onclick="mainMenuClicks(3)">tilbake</button>
+		</div>
+
+		<div class="playArea">
+			<h4 id="topText">&nbsp;</h4>
+
+			<input type="tel" pattern="\d*" id="input-playerCount" placeholder="">
+			<button id="confirm-playerCount" onclick="countConfirmed()">OK</button>
+
+			<input type="text" id="input-playerName" placeholder="" maxlength="5">
+			<button id="confirm-playerNames" onclick="nameConfirmed()">OK</button>
+
+			<button id="questTypeButton" onclick="getType()">...</button>
+			<h2 id="questType-text">&nbsp;</h2>
+
+			<button id="questButton" onclick="getQuests()">?</button>
+			<h3 id="quest-text">&nbsp;</h3>
+
+			<button id="smileyButton" onclick="getPoint()">:)</button>
+			<button id="frownButton" onclick="noPoint()">:(</button>
+		</div>
+
+		<div class="footer">
+			<h4 id="status">(C) fyllesnakk.no 2017</h4>
+		</div>
+
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-74447519-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="quests.js"></script>
+		<script src="script.js"></script>
+
+</body>
+</html>
