@@ -1,3 +1,14 @@
+/* 
+fyllesnakk.txt av Ole Petter Baugerød Stokke
+
+ting å fikse:
+* gjøre mer DRY
+* ikke skrive til tekst fra js, skjule og vise bolker i stedet
+* ulike poeng i ulike kategorier
+* objekter i stedet for masse arrays
+
+*/
+
 var textSpeed = 75;
 var blinkCounter = 0;
 var blinker = true;
@@ -10,20 +21,24 @@ var playerScores = [];
 var currentPlayer = 0;
 var playerNames = [];
 
-var questTypes = ["Hvem rundt bordet...", "Fyllefortell om...", "Fylledilemma:", "Fylla befaler:", "På mobilen:"];
+var questTypes = ["Hvem rundt bordet...", 
+                "Fyllefortell om...", 
+                "Fylledilemma!", 
+                "Fylla befaler:", 
+                "På mobilen:",
+                "Topp tre..."];
 
-window.onload = function()
-{
+window.onload = function () {
      $(".playArea").hide();
      $("#backButton").hide();
      $("#menuText").hide();
 
     loadQuests();
     runTests();
+    countQuests();
 }
 
-var mainMenuClicks = function (button)
-{
+function mainMenuClicks (button) {
     $("#startButton").hide();
     $("#helpButton").hide();
     $("#aboutButton").hide();
@@ -48,7 +63,7 @@ var mainMenuClicks = function (button)
 
         case 2:
             document.getElementById("menuText").innerHTML =
-            "Fyllesnakk er laget av <a href='http://www.olepetterstokke.no'>Ole Petter Baugerød Stokke.</a><br><br>" +
+            "Fyllesnakk er laget av <a href='http://www.olepetterstokke.no'>Ole Petter Baugerød Stokke</a> og GÜ7@n€ b0Ya$$$.<br><br>" +
             "Fyllesnakk.txt er designet for mobil. For klassisk desktop-Fyllesnakk, se <a href='http://www.fyllesnakk.no/klassisk'>fyllesnakk.no/klassisk.</a><br><br>" +
             "For mer informasjon, se <a href='http://snakk.fyllesnakk.no'>snakk.fyllesnakk.no</a>.";
         break;
@@ -64,10 +79,7 @@ var mainMenuClicks = function (button)
     }
 }
 
-var startGame = function ()
-{
-    countQuests();
-
+function startGame () {
     $(".menu").hide();
     $(".playArea").show();
 
@@ -83,17 +95,16 @@ var startGame = function ()
     printSentence("topText","Antall spillere?", "#input-playerCount", "#confirm-playerCount");
 }
 
-var countQuests = function ()
-{
+function countQuests () {
     console.log("bordet:" + questsBordet.length + " dilemma:" + questsDilemma.length
                                                 + " fortell:" + questsFortell.length + " mobilen:" + questsMobilen.length
-                                                + " befaler:" + questsBefaler.length + " totalt:" +
+                                                + " befaler:" + questsBefaler.length + " topp3:" + questsTopptre.length
+                                                + " totalt:" +
                                                 (questsBefaler.length+questsBordet.length+questsDilemma.length
-                                                +questsFortell.length+questsMobilen.length));
+                                                +questsFortell.length+questsMobilen.length+questsTopptre.length));
 }
 
-var countConfirmed = function ()
-{
+function countConfirmed () {
     if (document.getElementById("input-playerCount").value > 0)
     {
         $("#input-playerCount").hide();
@@ -109,8 +120,7 @@ var countConfirmed = function ()
     }
 }
 
-var nameConfirmed = function ()
-{
+function nameConfirmed () {
     if (document.getElementById("input-playerName").value != "")
     {
         $("#input-playerName").hide();
@@ -135,8 +145,7 @@ var nameConfirmed = function ()
     }
 }
 
-var getType = function ()
-{
+function getType () {
     $("#questType-text").show();
     $("#questTypeButton").hide();
 
@@ -145,8 +154,7 @@ var getType = function ()
     printSentence("questType-text",questTypes[randomNumber1],"#questButton");
 }
 
-var getQuests = function ()
-{
+function getQuests () {
     $("#quest-text").show();
     $("#questButton").hide();
 
@@ -154,57 +162,59 @@ var getQuests = function ()
 
     switch (currentQuestType)
     {
-        case 0:
+        case 0: //hvem rundt bordet
             currentQuests = questsBordet.concat(currentQuests);                 //legge riktig quests inn i potten det plukkes fra
             randomNumber = Math.floor((Math.random() * currentQuests.length));  //må få nummeret nå så riktig range
             questsBordet.splice(randomNumber,1);                                //fjerne quest som kommer til å bli plukka
         break;
 
-        case 1:
+        case 1: //fyllefortell
             currentQuests = questsFortell.concat(currentQuests);
             randomNumber = Math.floor((Math.random() * currentQuests.length));
             questsFortell.splice(randomNumber,1);
         break;
 
-        case 2:
+        case 2: //fylledilemma
             currentQuests = questsDilemma.concat(currentQuests);
             randomNumber = Math.floor((Math.random() * currentQuests.length));
             questsDilemma.splice(randomNumber,1);
         break;
 
-        case 3:
+        case 3: //fylla befaler
             currentQuests = questsBefaler.concat(currentQuests);
             randomNumber = Math.floor((Math.random() * currentQuests.length));
             questsBefaler.splice(randomNumber,1);
         break;
 
-        case 4:
+        case 4: //på mobilen
             currentQuests = questsMobilen.concat(currentQuests);
             randomNumber = Math.floor((Math.random() * currentQuests.length));
             questsMobilen.splice(randomNumber,1);
         break;
+
+        case 5: //topp 3
+            currentQuests = questsTopptre.concat(currentQuests);
+            randomNumber = Math.floor((Math.random() * currentQuests.length));
+            questsTopptre.splice(randomNumber,1);
+        break;
+
     }
 
     printSentence("quest-text",currentQuests[randomNumber],"#smileyButton", "#frownButton");
 }
 
-var getPoint = function ()
-{
+function getPoint () {
     playerScores[currentPlayer]++;
     blinkColor = "#ffa100"; //tullete å ikke ha denne i funksjonen, men funker ikke med delay-greia
     blinkScreen();
     newRound();
 }
 
-var noPoint = function ()	//trenger denne i tillegg til newround for å unngå rød blinking på start
-{
-    //blinkColor = "red";
-    //blinkScreen();
+function noPoint () {
     newRound();
 }
 
-var newRound = function ()
-{
+function newRound () {
     $("#questButton").hide();
     $("#smileyButton").hide();
     $("#questType-text").hide();
@@ -224,8 +234,7 @@ var newRound = function ()
     printSentence("topText",playerNames[currentPlayer] + ":", "#questTypeButton");
 }
 
-var displayScore = function ()
-{
+function displayScore () {
     document.getElementById("status").innerHTML = "";
 
     playerScores.reverse(); //for å unngå at alt blir omvendt
@@ -243,8 +252,7 @@ var displayScore = function ()
     playerNames.reverse();
 }
 
-var blinkScreen = function ()
-{
+function blinkScreen () {
     blinkCounter++;
 
     if (blinkCounter < 7)
@@ -272,8 +280,7 @@ var blinkScreen = function ()
     }
 }
 
-var easterEgg = function ()
-{
+function easterEgg () {
     var letters = '0123456789ABCDEF';	//stjålet, men forstått
     var color = '#';
     for (var i = 0; i < 6; i++ )
@@ -320,7 +327,12 @@ function printSentence(id, sentence, button1, button2)
     }
 }
 
-var runTests = function ()
-{
+function runTests () {
+    console.log('Kjører tester:');
 
+    // i=0;
+    // while(i<50) {
+    //     i++;
+    //     console.log(Math.floor((Math.random() * questTypes.length)));
+    // }
 }

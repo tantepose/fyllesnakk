@@ -3,9 +3,44 @@ var questsBefaler = [];
 var questsBordet = [];
 var questsFortell = [];
 var questsMobilen = [];
+var questsTopptre = [];
 
 var loadQuests = function ()
 {
+    
+    questsTopptre = ["...kollegaer du vil ligge med?",
+    "...kjendiser du vil ligge med?",
+    "...venner du vil ligge med?",
+    "...andres kjærester du vil ligge med?",
+    "...dyr du helst ville hatt sex med?",
+    "...fetisjer du ville prøvd?",
+    "...sportslige prestasjoner?",
+    "...akademiske prestasjoner?",
+    "...ting du ville bli når du var liten?",
+    "...verste ting fra 90-tallet?",
+    "...verste ting fra 80-tallet?",
+    "...beste ting fra 90-tallet?",
+    "...beste ting fra 80-tallet?",
+    "...folk du kunne drept?",
+    "...sykdommer du ikke vil ha?",
+    "...nasjonaliteter du vil ha sex med?",
+    "...klær du hater?",
+    "...yrker du kunne tenke deg?",
+    "...sportsgrener å være proff i?",
+    "...folk du ikke vil møte igjen?",
+    "...dårlige perioder av livet?",
+    "...gode perioder av livet?",
+    "...dyreste kjøpene dine de siste åra?",
+    "...galeste folkene du kjenner?",
+    "...band du ville spilt i?",
+    "...imitasjoner av kjendiser du kan?",
+    "...populærkulturelle låter du kan synge?",
+    "...evner du skulle ønske du hadde?",
+    "...valg i livet du skulle ønske å endre?",
+    "...familiemedlemmer?",
+    "...verste ferieminner?",
+    "...beste ferieminner?"]
+
     questsDilemma = ["Drikke mye tiss eller spise litt bæsj?",
     "Aldri sex eller aldri onani?",
     "Ligge med gammel motkjønnet eller ung medkjønnet?",
@@ -16,11 +51,11 @@ var loadQuests = function ()
     "Bli skikkelig dum eller skikkelig feit?",
     "Megapinlig kjønnsykdom eller farlig sykdom?",
     "Være pedofil eller nekrofil?",
-    "Ligge med 15- eller 70-åring?",
+    "Ligge med 15- eller 50-åring?",
     "Hvilken tante/onkel vil du helst ligge med?",
     "Miste penis eller hender?",
     "Alltid orgasme etter ett sekund, eller aldri?",
-    "Bli blind eller velge bekjent som må dø?",
+    "Bli døvblind eller velge bekjent som må dø?",
     "Drikke mens eller spise bajs?",
     "Hvilket dyr ville du helst liggi med?",
     "Sex med psykisk eller fysisk funksjonshemma?",
@@ -30,25 +65,27 @@ var loadQuests = function ()
     "Stor bukake eller medium bæsje-i-fjeset?",
     "Miste anus eller tomlene?",
     "Være pen i fattig land eller stygg i rikt land?",
-    "Hvilket søsken ville du helst ligget med?",
+    "Hvilket familiemedlem ville du helst ligget med?",
     "Megahårete fin kropp eller hårløs stygg kropp?",
     "Store ereksjons- eller konsentrasjons-vansker?",
     "Grønn kjempedigg sæd eller helt vanlig?",
-    "Kjæreste med 15- eller 50-åringer?",
-    "Gynokolog eller mammograf?",
+    "Kjæreste med 15- eller 60-åring?",
+    "Være gynokolog eller mammograf?",
     "Miste jobben eller kjæresten?",
     "Lukte jævlig eller se jævlig ut?",
     "Aldri oralsex eller aldri onani?",
-    "Drepe en katt eller apekatt?"];
+    "Drepe en katt eller apekatt?",
+    "Hjerneskade eller hjerteskade?",
+    "Dø gammel og trist eller ung og glad?",
+    "Evig førr og fyrrig eller vanlig livsløp?",
+    "Leve med vakker FrP-er eller stygg SV-er?"];
 
-    questsBordet = ["...tror du er minst lykkelig?",
-    "...ville du helst klina med?",
+    questsBordet = ["...ville du helst klina med?",
     "...tror du har lengst penis?",
     "...tror du er lykkeligst?",
     "...tror du er gladest i deg?",
     "...tror du har ligget med flest?",
     "...ville du hatt som forelder?",
-    "...tror du vil dø tristest?",
     "...har du pinligst historie om?",
     "...er du oftest irritert på?",
     "...ville du helst ikke ligget med?",
@@ -85,7 +122,10 @@ var loadQuests = function ()
     "...ville du ansatt i selskapet ditt?",
     "...ville du ikke ansatt i selskapet ditt?",
     "...tror du gir best oralsex?",
-    "...ville vært mest trolig Trump-velger?"];
+    "...ville vært mest trolig Trump-velger?",
+    "...har heitest kjæreste?",
+    "...har morsomst kjæreste?",
+    "...har kulest foreldre?"];
 
     questsFortell = ["...ditt første samleie!",
     "...ditt første kyss!",
@@ -131,7 +171,13 @@ var loadQuests = function ()
     "...sist du ble dumpa!",
     "...verste jobben du har hatt!",
     "...hvor ofte du onanerer!",
-    "...det som har irritert deg mest siste uke!"];
+    "...det som har irritert deg mest siste uke!",
+    "...når du sist gråt!",
+    "...når du sist så noen gråte!",
+    "...hvem du har sagt du elsker!",
+    "...din siste prump!",
+    "...din siste #metoo-opplevelse!",
+    "...noe du angrer skikkelig på!"];
 
     questsBefaler = ["Kyss personen flaska peker på!",
     "Styrt resten av flaska!",
@@ -160,7 +206,6 @@ var loadQuests = function ()
     "Ta foten på tissen og fortell vits!",
     "Tunga på øyeeplet til den flaska peker på!",
     "Bodyshot fra den flaska peker på!",
-    "Motspillerne lager egen oppgave!",
     "Spis din egen, eller andres, navlelo!",
     "Gjør et megafett partytriks!",
     "Si 6 synonymer på penis på 10 sekunder!",
@@ -200,7 +245,6 @@ var loadQuests = function ()
     "Send sexy selfie i siste FB-samtale!",
     "Skriv 'kline? :-D' i siste FB-samtale!",
     "Lik alle FB-poster i fem sveip nedover!",
-    "Gi motspillere fritt spillerom!",
     "Vinn duell i valgfritt mobilspill!",
     "Vis fineste på barneskolen!",
     "Vis dummeste på barneskolen!",
@@ -215,5 +259,8 @@ var loadQuests = function ()
     "Send :'( i siste FB-tråd!",
     "La motspillerne vurdere selfiene dine!",
     "Tegn penis, ta bilde, send i siste tråd!",
-    "Plukk kontakt i blinde, og ring!"];
+    "Plukk kontakt i blinde, ring!",
+    "Beskriv siste 5 bilder, ikke vis!",
+    "Vis fram alle bankkontoer!",
+    "Vis og forklar siste 5 vippsinger!"];
 }
